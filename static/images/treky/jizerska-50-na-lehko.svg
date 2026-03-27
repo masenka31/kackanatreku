@@ -1,0 +1,21 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#102C0B"/>
+  <rect width="1600" height="900" fill="url(#paint0_linear_1_2)"/>
+  <circle cx="1260" cy="140" r="140" fill="#ECAC27" fill-opacity="0.82"/>
+  <path d="M0 630L170 520L310 590L500 430L670 535L825 350L1040 525L1180 435L1450 620L1600 560V900H0V630Z" fill="#365E19"/>
+  <path d="M0 700L190 610L350 670L540 560L700 640L890 470L1080 640L1230 565L1460 700L1600 650V900H0V700Z" fill="#4D7D1E"/>
+  <path d="M1040 585C1126 585 1196 515 1196 429C1196 343 1126 273 1040 273C954 273 884 343 884 429C884 515 954 585 1040 585Z" fill="#F8F6EF" fill-opacity="0.18"/>
+  <path d="M930 360C979 378 1014 405 1052 450C1090 495 1144 534 1218 555" stroke="#F8F6EF" stroke-opacity="0.78" stroke-width="16" stroke-linecap="round"/>
+  <g opacity="0.92">
+    <rect x="86" y="90" width="468" height="274" rx="28" fill="#F8F6EF" fill-opacity="0.1" stroke="#F8F6EF" stroke-opacity="0.2"/>
+    <text x="124" y="180" fill="#F8F6EF" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="700">Jizerská 50 na lehko</text>
+    <text x="124" y="236" fill="#F8F6EF" fill-opacity="0.78" font-family="Inter, Arial, sans-serif" font-size="24">Dvoudenní test tempa v horách</text>
+  </g>
+  <defs>
+    <linearGradient id="paint0_linear_1_2" x1="290" y1="0" x2="1200" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#153E0A"/>
+      <stop offset="0.55" stop-color="#245512"/>
+      <stop offset="1" stop-color="#6C8A1B"/>
+    </linearGradient>
+  </defs>
+</svg>

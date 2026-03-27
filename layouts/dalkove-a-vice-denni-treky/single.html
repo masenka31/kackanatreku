@@ -1,0 +1,25 @@
+{{ define "main" }}
+  <article class="container page-wrap article-wrap article-wrap-wide">
+    {{ partial "article/trail-hero.html" . }}
+
+    {{ if not .Params.trail }}
+      <header class="article-head mb-4">
+        {{ with .CurrentSection }}
+          <p class="kicker mb-2"><a href="{{ .RelPermalink }}" class="text-decoration-none">{{ .Title }}</a></p>
+        {{ end }}
+        <h1 class="display-6 fw-bold mb-3">{{ .Title }}</h1>
+        <p class="post-meta mb-0">{{ .Date.Format "2. 1. 2006" }}</p>
+      </header>
+    {{ end }}
+
+    <div class="article-body">
+      {{ .Content }}
+    </div>
+
+    {{ with .CurrentSection }}
+      <footer class="article-footer mt-5 pt-4">
+        <a href="{{ .RelPermalink }}" class="btn btn-outline-accent article-back-link">Zpět do sekce {{ .Title }}</a>
+      </footer>
+    {{ end }}
+  </article>
+{{ end }}

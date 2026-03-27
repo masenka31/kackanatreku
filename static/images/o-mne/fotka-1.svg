@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="t d">
+  <title id="t">Ranni hrebenovka</title>
+  <desc id="d">Stylizovana ilustrace hrebene s postavou turistky.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ecac27"/>
+      <stop offset="100%" stop-color="#f8f6ef"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#sky)"/>
+  <circle cx="210" cy="180" r="86" fill="#ffd56d"/>
+  <path d="M0 600 L300 360 L520 620 L760 350 L1000 590 L1200 470 L1200 900 L0 900 Z" fill="#135400" opacity="0.86"/>
+  <path d="M0 700 L250 520 L470 740 L730 560 L930 720 L1200 630 L1200 900 L0 900 Z" fill="#1f6f08" opacity="0.8"/>
+  <rect x="560" y="520" width="34" height="120" rx="10" fill="#2f2308"/>
+  <circle cx="577" cy="490" r="26" fill="#2f2308"/>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="t d">
+  <title id="t">Vyhled na krajinu</title>
+  <desc id="d">Stylizovana ilustrace ceske krajiny s polem a lesem.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d8efc6"/>
+      <stop offset="100%" stop-color="#f8f6ef"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <path d="M0 510 C220 430 360 450 560 520 C760 590 930 560 1200 480 L1200 900 L0 900 Z" fill="#7db24b"/>
+  <path d="M0 610 C220 550 430 580 620 660 C810 740 960 720 1200 650 L1200 900 L0 900 Z" fill="#4e8f21"/>
+  <path d="M0 740 C180 710 360 730 550 790 C740 850 940 840 1200 780 L1200 900 L0 900 Z" fill="#135400"/>
+  <rect x="150" y="430" width="22" height="120" fill="#2d3b1f"/>
+  <circle cx="161" cy="405" r="44" fill="#2f7414"/>
+  <rect x="1040" y="390" width="22" height="140" fill="#2d3b1f"/>
+  <circle cx="1051" cy="360" r="52" fill="#2f7414"/>
+  <circle cx="980" cy="170" r="70" fill="#ecac27"/>
+</svg>

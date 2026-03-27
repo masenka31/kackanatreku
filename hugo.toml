@@ -1,0 +1,58 @@
+baseURL = 'https://example.org/'
+languageCode = 'cs-cz'
+title = 'Kačka na treku'
+
+[params]
+	description = 'Cestovatelský blog o dálkových trecích, výletech po Česku a vybavení.'
+	facebook  = 'https://facebook.com/KackaNaTreku/'
+	instagram = 'https://instagram.com/kacka.na.treku'
+	tiktok    = 'https://tiktok.com/@kackanatreku'
+	youtube   = 'https://youtube.com/@KackaNaTreku'
+
+[taxonomies]
+  tag = "tags"
+  country = "country"
+
+# Hlavní menu navigace
+[[menu.main]]
+name = 'Blog'
+url = '/'
+weight = 1
+
+[[menu.main]]
+name = 'Treky a výlety'
+url = '#'
+weight = 2
+
+  [[menu.main]]
+  name = 'Dálkové treky'
+  url = '/dalkove-a-vice-denni-treky/'
+  parent = 'Treky a výlety'
+  weight = 1
+
+  [[menu.main]]
+  name = 'Hut-to-hut'
+  url = '/hut-to-hut/'
+  parent = 'Treky a výlety'
+  weight = 2
+
+  [[menu.main]]
+  name = 'Denní výlety'
+  url = '/vylety-po-cesku/'
+  parent = 'Treky a výlety'
+  weight = 3
+
+[[menu.main]]
+name = 'Gearlisty a výbava'
+url = '/vybava-a-tipy/'
+weight = 3
+
+[[menu.main]]
+name = 'O mně'
+url = '/o-mne/'
+weight = 4
+
+[markup]
+	[markup.goldmark]
+		[markup.goldmark.renderer]
+			unsafe = true

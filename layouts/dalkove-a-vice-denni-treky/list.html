@@ -1,0 +1,51 @@
+{{ define "main" }}
+  <div class="container page-wrap">
+    <header class="mb-4">
+      <p class="kicker mb-2">Sekce blogu</p>
+      <h1 class="display-6 fw-bold mb-2">{{ .Title }}</h1>
+      {{ with .Content }}
+        <div class="section-intro">{{ . }}</div>
+      {{ end }}
+    </header>
+
+    {{ $countries := slice }}
+    {{ range .Pages }}
+      {{ with .Params.country }}
+        {{ $countries = $countries | append . }}
+      {{ end }}
+    {{ end }}
+    {{ $countries = $countries | uniq }}
+    {{ if $countries }}
+      <div class="country-filter mb-5">
+        <p class="filter-label mb-2">Filtrovat podle země:</p>
+        <div class="d-flex flex-wrap gap-2">
+          {{ range $countries }}
+            {{ $termPage := site.GetPage (printf "/country/%s" (. | urlize)) }}
+            {{ if $termPage }}
+              <a href="{{ $termPage.RelPermalink }}" class="country-tag">{{ . }}</a>
+            {{ else }}
+              <span class="country-tag">{{ . }}</span>
+            {{ end }}
+          {{ end }}
+        </div>
+      </div>
+    {{ end }}
+
+    <div class="row g-4">
+      {{ range .Pages.ByDate.Reverse }}
+        <div class="col-md-6 col-xl-4">
+          <article class="post-card h-100">
+            <p class="post-meta mb-2">{{ .Date.Format "2. 1. 2006" }}</p>
+            {{ with .Params.country }}<span class="country-badge">{{ . }}</span>{{ end }}
+            <h2 class="h5"><a href="{{ .RelPermalink }}" class="stretched-link text-decoration-none">{{ .Title }}</a></h2>
+            <p class="mb-0">{{ with .Summary }}{{ . }}{{ else }}{{ .Plain | truncate 130 }}{{ end }}</p>
+          </article>
+        </div>
+      {{ else }}
+        <div class="col-12">
+          <p>V této sekci zatím nejsou žádné články.</p>
+        </div>
+      {{ end }}
+    </div>
+  </div>
+{{ end }}

@@ -1,0 +1,50 @@
+{{ $trail := .Params.trail }}
+{{ if $trail }}
+  <section class="trail-article-hero mb-4 mb-md-5">
+    <div class="trail-article-shell">
+      <div class="trail-article-top">
+        {{ with $trail.hero_image }}
+          <div class="trail-article-visual">
+            <img src="{{ . | relURL }}" alt="{{ or $trail.hero_alt $.Title }}" class="trail-article-image" />
+          </div>
+        {{ end }}
+
+        <div class="trail-article-heading">
+          {{ with $.CurrentSection }}
+            <p class="kicker mb-2"><a href="{{ .RelPermalink }}" class="text-decoration-none">{{ .Title }}</a></p>
+          {{ end }}
+          <h1 class="trail-article-title">{{ $.Title }}</h1>
+          {{ with $trail.area }}
+            <p class="trail-article-area">{{ . }}</p>
+          {{ end }}
+          {{ with $trail.lead }}
+            <p class="trail-article-lead">{{ . }}</p>
+          {{ end }}
+        </div>
+      </div>
+
+      {{ with $trail.stats }}
+        <div class="trail-facts-card">
+          <div class="trail-facts-grid">
+            {{ range . }}
+              <div class="trail-fact-item">
+                <p class="trail-fact-label">{{ .label }}</p>
+                <div class="trail-fact-body">
+                  <span class="trail-fact-icon">
+                    {{ partial "article/trail-stat-icon.html" .icon }}
+                  </span>
+                  <div>
+                    <p class="trail-fact-value">{{ .value }}</p>
+                    {{ with .note }}
+                      <p class="trail-fact-note">{{ . }}</p>
+                    {{ end }}
+                  </div>
+                </div>
+              </div>
+            {{ end }}
+          </div>
+        </div>
+      {{ end }}
+    </div>
+  </section>
+{{ end }}

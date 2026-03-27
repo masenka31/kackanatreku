@@ -1,0 +1,163 @@
+{{ define "main" }}
+  {{ $trekySection := .Site.GetPage "section" "dalkove-a-vice-denni-treky" }}
+  {{ $vyletySection := .Site.GetPage "section" "vylety-po-cesku" }}
+  {{ $tipySection := .Site.GetPage "section" "vybava-a-tipy" }}
+  {{ $treky := where .Site.RegularPages "Section" "dalkove-a-vice-denni-treky" }}
+  {{ $vylety := where .Site.RegularPages "Section" "vylety-po-cesku" }}
+  {{ $tipy := where .Site.RegularPages "Section" "vybava-a-tipy" }}
+  {{ $heroKicker := .Params.hero_kicker | default "Najdi svůj další trek" }}
+  {{ $heroLead := .Params.hero_lead | default "Dálkové přechody, víkendové výlety po Česku a výbava, která fakt funguje v terénu." }}
+  {{ $heroPrimaryText := .Params.hero_primary_text | default "Najít trasu" }}
+  {{ $heroPrimaryURL := .Params.hero_primary_url | default "/dalkove-a-vice-denni-treky/" }}
+  {{ $heroSecondaryText := .Params.hero_secondary_text | default "Co je nového" }}
+  {{ $heroSecondaryURL := .Params.hero_secondary_url | default "/#co-je-noveho" }}
+  {{ $statArticlesLabel := .Params.stat_articles_label | default "Článků" }}
+  {{ $statDistanceValue := .Params.stat_distance_value | default "250+" }}
+  {{ $statDistanceLabel := .Params.stat_distance_label | default "Km v nohách" }}
+  {{ $quickStartTitle := .Params.quick_start_title | default "Rychlý start" }}
+  {{ $quickStartLink1Text := .Params.quick_start_link_1_text | default "Dálkové a vícedenní treky" }}
+  {{ $quickStartLink1URL := .Params.quick_start_link_1_url | default "/dalkove-a-vice-denni-treky/" }}
+  {{ $quickStartLink2Text := .Params.quick_start_link_2_text | default "Výlety po Česku" }}
+  {{ $quickStartLink2URL := .Params.quick_start_link_2_url | default "/vylety-po-cesku/" }}
+  {{ $quickStartLink3Text := .Params.quick_start_link_3_text | default "Vybavení a tipy" }}
+  {{ $quickStartLink3URL := .Params.quick_start_link_3_url | default "/vybava-a-tipy/" }}
+  {{ $discoverTitle := .Params.discover_title | default "Objev podle typu" }}
+  {{ $latestTitle := .Params.latest_title | default "Co je nového" }}
+  {{ $emptyFeatureTitle := .Params.empty_feature_title | default "Zatím tu nejsou žádné články." }}
+  {{ $emptyFeatureText := .Params.empty_feature_text | default "Přidej první markdown soubor do jedné ze sekcí a sekce se naplní automaticky." }}
+  {{ $emptyLatestText := .Params.empty_latest_text | default "Další články se objeví, jakmile přidáš obsah." }}
+
+  <div class="container">
+    <section class="hero-card trail-hero p-4 p-md-5 mb-5 mt-3">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-8">
+          <p class="kicker mb-2">{{ $heroKicker }}</p>
+          <h1 class="display-4 fw-bold mb-3">{{ .Title }}</h1>
+          <p class="lead mb-4">{{ $heroLead }}</p>
+          <div class="d-flex flex-wrap gap-2">
+            <a class="btn btn-accent btn-lg" href="{{ $heroPrimaryURL | relURL }}">{{ $heroPrimaryText }}</a>
+            <a class="btn btn-outline-accent btn-lg" href="{{ $heroSecondaryURL | relURL }}">{{ $heroSecondaryText }}</a>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="stats-grid hero-stats">
+            <div class="stat-box">
+              <p class="stat-value">{{ len .Site.RegularPages }}</p>
+              <p class="stat-label">{{ $statArticlesLabel }}</p>
+            </div>
+            <div class="stat-box">
+              <p class="stat-value">{{ $statDistanceValue }}</p>
+              <p class="stat-label">{{ $statDistanceLabel }}</p>
+            </div>
+            <div class="stat-box stat-box-wide">
+              <p class="stat-label mb-1">{{ $quickStartTitle }}</p>
+              <a href="{{ $quickStartLink1URL | relURL }}" class="quick-link">{{ $quickStartLink1Text }}</a>
+              <a href="{{ $quickStartLink2URL | relURL }}" class="quick-link">{{ $quickStartLink2Text }}</a>
+              <a href="{{ $quickStartLink3URL | relURL }}" class="quick-link">{{ $quickStartLink3Text }}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {{ with .Content }}
+      <section class="mb-5">
+        <div class="section-intro">{{ . }}</div>
+      </section>
+    {{ end }}
+
+    <section class="mb-5" aria-labelledby="discover-by-type">
+      <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+        <h2 id="discover-by-type" class="h3 m-0">{{ $discoverTitle }}</h2>
+      </div>
+      <div class="row g-4 trail-type-grid">
+        <div class="col-md-6 col-xl-4">
+          <article class="trail-type-card trail-type-card-treky h-100">
+            <p class="trail-type-eyebrow">Více</p>
+            <h3 class="h4 mb-2">Dálkové a vícedenní treky</h3>
+            <p class="mb-3">{{ len $treky }} tras včetně itinerářů.</p>
+            <a href="{{ with $trekySection }}{{ .RelPermalink }}{{ else }}{{ "/dalkove-a-vice-denni-treky/" | relURL }}{{ end }}" class="trail-type-link">Zobrazit trasy</a>
+          </article>
+        </div>
+
+        <div class="col-md-6 col-xl-4">
+          <article class="trail-type-card trail-type-card-vylety h-100">
+            <p class="trail-type-eyebrow">Více</p>
+            <h3 class="h4 mb-2">Výlety po Česku</h3>
+            <p class="mb-3">{{ len $vylety }} víkendových a jednodenních výletů.</p>
+            <a href="{{ with $vyletySection }}{{ .RelPermalink }}{{ else }}{{ "/vylety-po-cesku/" | relURL }}{{ end }}" class="trail-type-link">Zobrazit trasy</a>
+          </article>
+        </div>
+
+        <div class="col-md-6 col-xl-4">
+          <article class="trail-type-card trail-type-card-tipy h-100">
+            <p class="trail-type-eyebrow">Více</p>
+            <h3 class="h4 mb-2">Vybavení a tipy</h3>
+            <p class="mb-3">{{ len $tipy }} článků o výbavě a plánování.</p>
+            <a href="{{ with $tipySection }}{{ .RelPermalink }}{{ else }}{{ "/vybava-a-tipy/" | relURL }}{{ end }}" class="trail-type-link">Zobrazit trasy</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="co-je-noveho">
+      <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+        <h2 class="h3 m-0">{{ $latestTitle }}</h2>
+      </div>
+      {{ $latest := first 6 .Site.RegularPages.ByDate.Reverse }}
+      {{ $featured := index $latest 0 }}
+
+      <div class="row g-4 align-items-stretch">
+        <div class="col-lg-7">
+          {{ with $featured }}
+            <article class="feature-post h-100">
+              <p class="kicker mb-2">{{ .Date.Format "2. 1. 2006" }}{{ with .CurrentSection }} • {{ .Title }}{{ end }}</p>
+              <h3 class="display-6 fw-bold"><a href="{{ .RelPermalink }}" class="text-decoration-none stretched-link">{{ .Title }}</a></h3>
+              <p class="mb-0">{{ with .Summary }}{{ . }}{{ else }}{{ .Plain | truncate 210 }}{{ end }}</p>
+            </article>
+          {{ else }}
+            <article class="feature-post h-100">
+              <h3 class="h4">{{ $emptyFeatureTitle }}</h3>
+              <p class="mb-0">{{ $emptyFeatureText }}</p>
+            </article>
+          {{ end }}
+        </div>
+
+        <div class="col-lg-5">
+          <div class="latest-stack">
+            {{ range after 1 $latest }}
+              <article class="post-card latest-item">
+                <p class="post-meta mb-1">{{ .Date.Format "2. 1. 2006" }}{{ with .CurrentSection }} • {{ .Title }}{{ end }}</p>
+                <h3 class="h6 mb-1"><a href="{{ .RelPermalink }}" class="stretched-link text-decoration-none">{{ .Title }}</a></h3>
+                <p class="mb-0">{{ with .Summary }}{{ . | truncate 84 }}{{ else }}{{ .Plain | truncate 84 }}{{ end }}</p>
+              </article>
+            {{ else }}
+              <article class="post-card latest-item">
+                <p class="mb-0">{{ $emptyLatestText }}</p>
+              </article>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {{ $omne := .Site.GetPage "/o-mne" }}
+    {{ with $omne }}
+      <section class="about-teaser mt-5 mb-2">
+        <div class="about-teaser-card">
+          <div class="row align-items-center g-4">
+            <div class="col-md-2 text-center">
+              <img src="{{ "/loga/logo.png" | relURL }}" alt="Kačka" class="about-teaser-avatar" />
+            </div>
+            <div class="col-md-10">
+              <p class="kicker mb-1">O autorce</p>
+              <h2 class="h4 fw-bold mb-2">{{ .Title }}</h2>
+              <p class="mb-3">{{ .Summary }}</p>
+              <a href="{{ .RelPermalink }}" class="btn btn-outline-accent">Více o mně</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    {{ end }}
+  </div>
+{{ end }}
